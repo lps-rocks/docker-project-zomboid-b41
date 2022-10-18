@@ -9,7 +9,7 @@ chown -Rf steam:steam /home/steam
 
 # Install server
 sudo -u steam \
-    steamcmd "+force_install_dir /home/steam/pzserver +app_update ${STEAM_APP} validate +quit" && \
+    /usr/lib/games/steam/steamcmd.sh "+force_install_dir /home/steam/pzserver +app_update ${STEAM_APP} validate +quit" && \
     /home/steam/pzserver/start-server.sh -servername ${SERVER_NAME} ${SERVER_ADDITIONAL_PARAMS}
 
 exit $?

@@ -8,8 +8,10 @@ groupmod -g ${PGID} steam
 chown -Rf steam:steam /home/steam 
 
 # Install server
-sudo -u steam \
-    /usr/games/steamcmd "+force_install_dir /home/steam/pzserver +login anonymous +app_update ${STEAM_APP} validate +quit" && \
-    /home/steam/pzserver/start-server.sh -servername ${SERVER_NAME} ${SERVER_ADDITIONAL_PARAMS}
+sudo -u steam /usr/games/steamcmd "+force_install_dir /home/steam/pzserver +login anonymous +app_update ${STEAM_APP} validate +quit"
 
+# Launch server 
+sudo -u steam /home/steam/pzserver/start-server.sh -servername ${SERVER_NAME} ${SERVER_ADDITIONAL_PARAMS}
+
+# Return exit code of server
 exit $?

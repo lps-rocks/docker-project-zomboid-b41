@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Set the ownership of /data to the steam user
-chown steam:steam /home/steam/Zomboid /home/steam/pzserver
+chown -Rf steam:steam /home/steam/Zomboid /home/steam/pzserver
 
 # Install server
 sudo -u steam \

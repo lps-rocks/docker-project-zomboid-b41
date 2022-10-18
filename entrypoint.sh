@@ -21,6 +21,9 @@ sudo -u steam /usr/games/steamcmd "+force_install_dir /home/steam/pzserver +logi
 # Launch server 
 sudo -u steam tmux new-session -d /home/steam/pzserver/start-server.sh -servername ${SERVER_NAME} ${SERVER_ADDITIONAL_PARAMS}
 
+# Tail console log to output
+tail -f -n +1 /home/steam/Zomboid/server-console.txt & 
+
 # Wait for server to exit
 sudo -u steam tmux wait-for 0 
 

@@ -39,7 +39,6 @@ RUN adduser \
     --disabled-password \
     --shell /bin/bash \
     --gecos "" \
-    --group \
     steam && \
     usermod -G tty steam
 

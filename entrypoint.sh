@@ -2,11 +2,12 @@
 
 # Exit functions
 function stop_server() {
+        echo "Stopping Server...."
 	sudo -u steam tmux send-keys -t 0 "save" Enter "quit" Enter 
 } 
 
 # Trap 
-trap stop_server SIGTERM SIGINT SIGQUIT SIGHUP ERR
+trap 'stop_server' TERM
 
 # Set the user ID and group id
 usermod -u ${PUID} steam
@@ -24,8 +25,10 @@ sudo -u steam tmux new-session -d /home/steam/pzserver/start-server.sh -serverna
 # Tail console log to output
 tail -f -n +1 /home/steam/Zomboid/server-console.txt & 
 
-# Wait for server to exit
-sudo -u steam tmux wait-for 0 
+# Loop in sleep - we have to do this so that the traps work
+while true; do
+	sleep 1
+done 
 
 # Exit
 exit 0 

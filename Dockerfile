@@ -20,8 +20,8 @@ RUN sed -i -e's/ main$/ main contrib non-free/g' /etc/apt/sources.list
 RUN dpkg --add-architecture i386
 
 # Preseed SteamCMD install
-RUN echo steam steam/question select "I AGREE" | sudo debconf-set-selections
-RUN echo steam steam/license note '' | sudo debconf-set-selections
+RUN echo steam steam/question select "I AGREE" | debconf-set-selections
+RUN echo steam steam/license note '' | debconf-set-selections
 
 # Install SteamCMD
 RUN apt-get update && \

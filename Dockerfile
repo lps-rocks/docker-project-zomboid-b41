@@ -34,7 +34,7 @@ RUN rm -rf /var/lib/apt/lists/* && \
     rm -rf /var/tmp/*
 # Add the steam group
 RUN addgroup \
-    --gid ${PGID}
+    --gid ${PGID} \
     steam
 
 # Add the steam user

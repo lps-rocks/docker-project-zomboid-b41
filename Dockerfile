@@ -25,7 +25,7 @@ RUN echo steam steam/license note '' | debconf-set-selections
 
 # Install SteamCMD
 RUN apt-get update && \
-    apt-get -y install -y lib32gcc-s1 steamcmd && \
+    apt-get -y install -y sudo lib32gcc-s1 steamcmd && \
     apt-get clean
 
 # Clean up APT
@@ -53,4 +53,8 @@ EXPOSE 16262/udp
 # Expose Mounts
 VOLUME ["/home/steam/Zomboid", "/home/steam/pzserver"]
 
+# Working directory
+WORKDIR /home/steam
+
+# Entrypoint
 ENTRYPOINT ["/entrypoint.sh"]

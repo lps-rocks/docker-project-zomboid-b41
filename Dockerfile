@@ -25,13 +25,20 @@ RUN echo steam steam/license note '' | debconf-set-selections
 
 # Install SteamCMD
 RUN apt-get update && \
-    apt-get -y install -y sudo ca-certificates lib32gcc-s1 steamcmd && \
+    apt-get -y install -y locales sudo ca-certificates lib32gcc-s1 steamcmd && \
     apt-get clean
 
 # Clean up APT
 RUN rm -rf /var/lib/apt/lists/* && \
     rm -rf /tmp/* && \
     rm -rf /var/tmp/*
+
+# Set the locale
+RUN sed -i -e 's/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen && \
+    locale-gen
+ENV LANG=en_US.UTF-8 \
+    LANGUAGE=en_US:en \ 
+    LC_ALL=en_US.UTF-8
 
 # Add the steam user
 RUN adduser \

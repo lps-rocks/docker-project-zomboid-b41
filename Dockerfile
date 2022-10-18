@@ -40,6 +40,7 @@ RUN adduser \
     --shell /bin/bash \
     --gecos "" \
     --uid ${PUID} \
+    --group \
     --gid ${PGID} \
     steam && \
     usermod -G tty steam

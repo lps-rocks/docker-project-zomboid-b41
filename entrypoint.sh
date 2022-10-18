@@ -1,7 +1,11 @@
 #!/bin/bash
 
+# Set the user ID and group id
+usermod -u ${PUID} steam
+groupmod -g ${PGID} steam 
+
 # Set the ownership of /data to the steam user
-chown -Rf steam:steam /home/steam/Zomboid /home/steam/pzserver
+chown -Rf steam:steam /home/steam 
 
 # Install server
 sudo -u steam \

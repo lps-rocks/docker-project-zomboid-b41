@@ -32,10 +32,6 @@ RUN apt-get update && \
 RUN rm -rf /var/lib/apt/lists/* && \
     rm -rf /tmp/* && \
     rm -rf /var/tmp/*
-# Add the steam group
-RUN addgroup \
-    --gid ${PGID} \
-    steam
 
 # Add the steam user
 RUN adduser \
@@ -43,8 +39,7 @@ RUN adduser \
     --disabled-password \
     --shell /bin/bash \
     --gecos "" \
-    --uid ${PUID} \
-    --group steam \
+    --group \
     steam && \
     usermod -G tty steam
 

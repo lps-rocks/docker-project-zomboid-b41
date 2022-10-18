@@ -2,7 +2,7 @@
 
 # Exit functions
 function stop_server() {
-	tmux send-keys -t 0 "save" Enter "quit" Enter 
+	sudo -u steam tmux send-keys -t 0 "save" Enter "quit" Enter 
 } 
 
 # Trap 

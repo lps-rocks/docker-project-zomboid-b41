@@ -21,7 +21,7 @@ RUN dpkg --add-architecture i386
 
 # Install SteamCMD
 RUN apt-get update && \
-    apt-get install lib32gcc-s1 steamcmd && \
+    apt-get -y install -y lib32gcc-s1 steamcmd && \
     apt-get clean
 
 # Clean up APT

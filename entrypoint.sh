@@ -28,7 +28,9 @@ sudo -u steam tmux new-session -d /home/steam/pzserver/start-server.sh -serverna
 # Tail console log to output
 tail -f -n +1 /home/steam/Zomboid/server-console.txt & 
 
-sleep 300
+# Wait at least 30 seconds
+sleep 30
+
 # Loop in sleep - we have to do this so that the traps work
 while [ "$(pgrep ProjectZomboid | wc -l)" -gt 0 ]; do
 	sleep 1

@@ -16,6 +16,9 @@ groupmod -g ${PGID} steam
 # Set the ownership of /data to the steam user
 chown -Rf steam:steam /home/steam 
 
+# Clear console log
+echo -n > /home/steam/Zomboid/server-console.txt
+
 # Install server
 sudo -u steam /usr/games/steamcmd "+force_install_dir /home/steam/pzserver +login anonymous +app_update ${STEAM_APP} validate +quit"
 
@@ -26,7 +29,7 @@ sudo -u steam tmux new-session -d /home/steam/pzserver/start-server.sh -serverna
 tail -f -n +1 /home/steam/Zomboid/server-console.txt & 
 
 # Loop in sleep - we have to do this so that the traps work
-while [[ $(tmux list-sessions) -ne 0 ]]; do
+while [[ $(sudo -u steam tmux list-sessions) -ne 0 ]]; do
 	sleep 1
 done 
 

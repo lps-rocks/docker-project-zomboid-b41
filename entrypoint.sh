@@ -26,7 +26,7 @@ sudo -u steam tmux new-session -d /home/steam/pzserver/start-server.sh -serverna
 tail -f -n +1 /home/steam/Zomboid/server-console.txt & 
 
 # Loop in sleep - we have to do this so that the traps work
-while true; do
+while [[ $(tmux list-sessions) -ne 0 ]]; do
 	sleep 1
 done 
 
